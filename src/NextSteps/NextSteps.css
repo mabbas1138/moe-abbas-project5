@@ -1,0 +1,14 @@
+.nextstepText {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.nextstepText h2 {
+    padding-right: 10px;
+}
+
+.nextstepText p {
+    padding-top: 5px;
+}

@@ -1,0 +1,14 @@
+.goalText {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.goalText h2 {
+    padding-right: 10px;
+}
+.goalText p {
+    padding-top: 5px;
+}
+

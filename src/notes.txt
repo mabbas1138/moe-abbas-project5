@@ -1,0 +1,17 @@
+LOOK UP:
+
+> "Child Component"
+
+> Article: https://github.com/uberVU/react-guide/blob/master/props-vs-state.md
+-- "You should avoid having too many Stateful Components" -> So should I make the App Component the only stateful component, and the rest just get props? 
+If I can have more than one Stateful prop, what's the logic behind designating one or the other as one?
+
+
+QUESTIONS
+
+> The 'Goal' and 'Next Steps' components are similar...
+Should I nest the 'Goal' component inside the 'Next Steps' component?
+
+> Item key and Id are the same...why not just target the key in the removeBooks? Similarly, why add an id at all?
+
+> If we're not rendering firebase in App, the import line doesn't need to be included, right?
