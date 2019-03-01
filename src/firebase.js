@@ -1,6 +1,6 @@
 import firebase from 'firebase'
 
-  var config = {
+  const config = {
       apiKey: "AIzaSyC_OUVVHrV6yJ5MvNmUz78bsr4ufFt4qwk",
       authDomain: "moe-abbas-project5.firebaseapp.com",
       databaseURL: "https://moe-abbas-project5.firebaseio.com",
