@@ -15,3 +15,12 @@ Should I nest the 'Goal' component inside the 'Next Steps' component?
 > Item key and Id are the same...why not just target the key in the removeBooks? Similarly, why add an id at all?
 
 > If we're not rendering firebase in App, the import line doesn't need to be included, right?
+
+
+====
+
+// 1) Create a method on app -- its function is to update the app state with the current firebase key for the goal
+// 2) this methods needs to be passed down to goal, so that goal has access to it
+// 3) from goal, we need to call update key via props and pass in the firebase key thart's generated during push of the goal
+// 4) Pass this.state.key down to next steps and store that key in the button (data attribute)
+// 5) on next steps button, use that key to push next steps to corresponding goal

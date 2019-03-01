@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import './NextSteps.css';
+import './Comment.css';
 import firebase from '../firebase.js';
 
-class NextSteps extends Component {
+
+
+class Comment extends Component {
     constructor() {
         super();
         this.state = {
@@ -75,4 +77,4 @@ class NextSteps extends Component {
         }   
 }
 
-export default NextSteps;
+export default Comment;
