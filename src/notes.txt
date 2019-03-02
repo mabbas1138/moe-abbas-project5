@@ -12,3 +12,6 @@
 
                 })}
                 </li>
+
+                
+                {this.state.isBroken ? (<p>ERROR! But technology can't stop you. NOTHING CAN STOP YOU (refresh, please)</p>) : ()

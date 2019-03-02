@@ -1,14 +1,14 @@
-.nextstepText {
+.goalText {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
 }
 
-.nextstepText h2 {
+.goalText h2 {
     padding-right: 10px;
 }
-
-.nextstepText p {
+.goalText p {
     padding-top: 5px;
 }
+

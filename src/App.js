@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
-import Goal from './Goal/Goal.js';
-import './Goal/Goal.css';
-// import Comment from './Comment/Comment.js';
-// import './Comment/Comment.css';
+// import Goal from '.Goal/Goal.js';
+// import './Goal/Goal.css';
+// import ErrorHandling from './ErrorHandling/ErrorHandling.js';
+// import './ErrorHandling/ErrorHandlig.css';
 import firebase from './firebase.js';
-
 
 class App extends Component {
     constructor() {
@@ -13,8 +12,8 @@ class App extends Component {
         this.state = {
             goal: '',
             deadline: '',
-            startDate: '',
-            entries: []
+            notes: '',
+            entries: [],
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -33,13 +32,13 @@ class App extends Component {
         const entry = {
             goal: this.state.goal,
             deadline: this.state.deadline,
-            startDate: this.state.startDate
+            notes: this.state.notes
         }
         entryRef.push(entry);
         this.setState({
             goal: '',
             deadline:'',
-            startDate:''
+            notes: ''
         })
     }
 
@@ -58,7 +57,7 @@ class App extends Component {
                     id: entry,
                     goal: entries[entry].goal,
                     deadline: entries[entry].deadline,
-                    startDate: entries[entry].startDate
+                    notes: entries[entry].notes
                 });
             }
         this.setState({
@@ -72,40 +71,55 @@ class App extends Component {
       <div className='App'>
         <header>
             <div className='titleWrapper'>
-              <h1>Bucket List Planner</h1>
-              <h2>Because only losers die with regrets</h2>
+                <h1>Don't Kick the Bucket List</h1>
+                <h2>Don't Die with Regrets</h2>
             </div>
         </header>
-        <div className='inputContainer'>
-          <section className='userInputs'>
-              <form onSubmit={this.handleSubmit}>
-                <h3>Goal</h3>
-                <input type="text" name="goal" placeholder="No Mickey Mouse Bullshit!" onChange={this.handleChange} value={this.state.goal} />
-                <h3>Deadline</h3>
-                <input type="text" name="deadline" placeholder="Deadline" onChange={this.handleChange} value={this.state.deadline} />
-                <h3>Start Date</h3>
-                <input type="text" name="startDate" placeholder="Crush time with willpower!" onChange={this.handleChange} value={this.state.startDate} />
-                <button>Add Entry</button>
-              </form>
-          </section>
-          <section className='entryDisplay'>
-            <div className='entryDisplayWrapper'>
-              <ul>
-                {this.state.entries.map((entry) => {
-                    return (
-                        <li key={entry.id}>
-                            <h3>{entry.goal}</h3>
-                            <p>I will crush this sweet ass goal by <span className='deadlineEmph'>{entry.deadline}</span></p>
-                            <p> I will work towards crushing said goal by <span className='startDateEmph'>{entry.startDate}</span></p>
-                            <button onClick={() => this.removeEntry(entry.id)}>Delete (because I'm a loser)</button>
-                        </li>
-                    )
-                })}
-              </ul>
+        <section className='userInputs'>
+          <form onSubmit={this.handleSubmit}>
+            <div className='inputSubject'>
+                <h3>Goal:</h3>
+                <input type="text" name="goal" onChange={this.handleChange} value={this.state.goal} required />
             </div>
-          </section>
-        </div>
-      </div>
+            <div className='inputSubject'>
+                <h3>Deadline:</h3>
+                <input type="text" name="deadline" onChange={this.handleChange} value={this.state.deadline} required />
+            </div>
+            <div className='inputSubject'>
+                <h3>Notes:</h3>
+                <textarea name="notes" placeholder=" Max. 200 characters" onChange={this.handleChange} value={this.state.notes}  cols='19' maxlength='200' required />
+            </div>
+            <button className='addEntry'>Add Entry</button>
+          </form>
+        </section>
+        <section className='entryDisplay'>
+          <div className='entryDisplayWrapper'>
+            <ul>
+              {this.state.entries.map((entry) => {
+                  return (
+                    <div className='entryItemContainer' id='entryItemContainer'>
+                        <li key={entry.id}>
+                            <div className='entryItem'>
+                                <h3>Goal</h3>
+                                <p>{entry.goal}</p>
+                            </div>
+                            <div className='entryItem'>
+                                <h3>Deadline</h3>
+                                <p>{entry.deadline}</p>
+                            </div>
+                            <div className='entryItem'>
+                                <h3>Notes</h3>
+                                <p className='notesBlock'>{entry.notes}</p>
+                            </div>
+                            <button onClick={() => this.removeEntry(entry.id)}>Delete</button>
+                        </li> 
+                    </div>
+                  )
+              })}
+            </ul>
+          </div>
+        </section>
+    </div>
     );
   }
 }
