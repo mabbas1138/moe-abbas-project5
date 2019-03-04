@@ -2,10 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Header from './Header/Header.js'
 import './Header/Header.css';
-// import Entry from '.Entry/Entry.js';
-// import './Goal/Goal.css';
-import image from './assets/waterBucket2.png'
-import ErrorHandling from './ErrorHandling/ErrorHandling.js';
+import image from './assets/waterBucket2.png';
 import firebase from './firebase.js';
 
 class App extends Component {
@@ -16,18 +13,18 @@ class App extends Component {
             deadline: '',
             notes: '',
             entries: [],
-            hasError: false
-        }
+            isLoading: true
+        };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-    }
+    };
 
     handleChange = (event) => {
         event.preventDefault();
         this.setState({
             [event.target.name]: event.target.value
-        })
-    }
+        });
+    };
 
     handleSubmit = (event) => {
         event.preventDefault();
@@ -36,20 +33,20 @@ class App extends Component {
             goal: this.state.goal,
             deadline: this.state.deadline,
             notes: this.state.notes
-        }
+        };
 
         entryRef.push(entry);
         this.setState({
             goal: '',
             deadline:'',
             notes: ''
-        })
-    }
+        });
+    };
 
     removeEntry(entryId) {
         const entryRef = firebase.database().ref(`/entries/${entryId}`);
         entryRef.remove();
-    }
+    };
 
     componentDidMount() {
         const entryRef = firebase.database().ref('entries');
@@ -63,12 +60,13 @@ class App extends Component {
                     deadline: entries[entry].deadline,
                     notes: entries[entry].notes
                 });
-            }
+            };
             this.setState({
-                entries: newState
-            })
-        })
-    }
+                entries: newState,
+                isLoading: false
+            });
+        });
+    };
 
   render() {
     return (
@@ -76,7 +74,6 @@ class App extends Component {
       {/* see index.html file for skipLink code*/}
         <Header />
         <section className='userInputs'>
-        <ErrorHandling>
           <form onSubmit={this.handleSubmit}>
             <div className='inputSubject'>
                 <h3>Goal:</h3>
@@ -98,38 +95,41 @@ class App extends Component {
           <div className="bucket">
             <img src={image} alt="a red bucket of water" />
           </div>
-        </ErrorHandling>
         </section>
         <section className='entryDisplay'>
           <div className='entryDisplayWrapper'>
             <ul>
-              {this.state.entries.map((entry) => {
+            {this.state.isLoading ? ( 
+                <p className="errorHandling"> The Page is Loading </p>
+            ) : (
+              this.state.entries.map((entry) => {
                   return (
-                      <div className='entryItemContainer'>
-                          <li key={entry.id}>
-                            <div className='entryItem'>
-                                <h3>Goal</h3>
-                                <p>{entry.goal}</p>
-                            </div>
-                            <div className='entryItem'>
-                                <h3>Deadline</h3>
-                                <p>{entry.deadline}</p>
-                            </div>
-                            <div className='entryItem'>
-                                <h3>Notes</h3>
-                                <p className='notesBlock'>{entry.notes}</p>
-                            </div>
-                            <button className='deleteStyle' onClick={() => this.removeEntry(entry.id)}>Delete</button>
+                    <div className='entryItemContainer'>
+                        <li key={entry.id}>
+                          <div className='entryItem'>
+                              <h3>Goal</h3>
+                              <p>{entry.goal}</p>
+                          </div>
+                          <div className='entryItem'>
+                              <h3>Deadline</h3>
+                              <p>{entry.deadline}</p>
+                          </div>
+                          <div className='entryItem'>
+                              <h3>Notes</h3>
+                              <p className='notesBlock'>{entry.notes}</p>
+                          </div>
+                          <button className='deleteStyle' onClick={() => this.removeEntry(entry.id)}>Delete</button>
                         </li> 
                     </div>
-                  )
-              })}
+                  );
+              })
+            )}
             </ul>
-          </div>
+         </div>
         </section>
     </div>
     );
-  }
-}
+  };
+};
 export default App;
 
