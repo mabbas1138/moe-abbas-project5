@@ -2,13 +2,13 @@
   height: 100vh;
   max-width: 1600px;
   width: 100%;
+text-align: center;
   background-image: url(./assets/desert5.jpeg);
   background-position: bottom;
   background-size: cover;
   border-bottom: 1px;
   padding: 1px;
   margin: 0 auto;
-  text-align: center;
 }
 
 /* USER INPUTS */
@@ -72,7 +72,7 @@ textarea {
 }
 
 .addStyle {
-    margin: 0 auto;
+    margin: 7px auto 0 auto;
     padding: 5px;  
 }
 
