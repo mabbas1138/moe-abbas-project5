@@ -5,6 +5,12 @@ import './Header/Header.css';
 import image from './assets/waterBucket2.png';
 import firebase from './firebase.js';
 
+{/*NOTE: for some reason, when I created a stateless Entry component with props, 
+my page would refresh every time a new entry was submitted (this didn't delete previous entries), 
+as if you were landing on the page for the first time. I found that split second blank white page to be annoying, 
+so I refactored it here as a result. 
+ */}
+
 class App extends Component {
     constructor() {
         super();
@@ -88,7 +94,7 @@ class App extends Component {
             <div className='inputSubject'>
                 <h3>Notes:</h3>
                 <label htmlFor='notes' className='visuallyHidden' />
-                <textarea name='notes' placeholder=' Max. 200 characters' onChange={this.handleChange} value={this.state.notes}  cols='19' maxlength='200' required />
+                <textarea name='notes' placeholder=' Max. 200 characters' onChange={this.handleChange} value={this.state.notes}  cols='19' maxLength='200' required />
             </div>
                 <button className='addStyle'>Add Entry</button>
           </form>
