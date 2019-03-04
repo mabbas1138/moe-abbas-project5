@@ -1,14 +1,14 @@
 .App {
-  height: 100vh;
-  max-width: 1600px;
-  width: 100%;
-text-align: center;
-  background-image: url(./assets/desert5.jpeg);
-  background-position: bottom;
-  background-size: cover;
-  border-bottom: 1px;
-  padding: 1px;
-  margin: 0 auto;
+    height: 100vh;
+    max-width: 1600px;
+    width: 100%;
+    text-align: center;
+    background-image: url(./assets/desert5.jpeg);
+    background-position: bottom;
+    background-size: cover;
+    border-bottom: 1px;
+    padding: 1px;
+    margin: 0 auto;
 }
 
 /* USER INPUTS */
@@ -36,7 +36,7 @@ form {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    border: 3px solid saddlebrown;
+    border: 3px solid #8B4513;
     border-radius: 20px;
     padding: 5px;
     margin: 5px;
@@ -45,7 +45,7 @@ form {
 .inputSubject h3 {
     font-family: 'Roboto Slab', serif; 
     font-size: 1.1rem;
-    color: black;
+    color: #000000;
     margin: 2px 0 2px 0;
     padding-right: 5px;
 }
@@ -65,9 +65,9 @@ textarea {
 
 .addStyle,
 .deleteStyle {
-    background-color: lightblue;
+    background-color: #ADD8E6;
     font-weight: bold;
-    border: 3px solid saddlebrown;
+    border: 3px solid #8B4513;
     border-radius: 20px;
 }
 
@@ -84,9 +84,9 @@ textarea {
 
 .addStyle:focus-within,
 .deleteStyle:focus-within {
-    border: 3px solid lime;
-    background-color: purple;
-    color: white;
+    border: 3px solid #00FF00;
+    background-color: #800080;
+    color: #FFFFFF;
     font-weight: bold;
 }
 
@@ -128,7 +128,7 @@ textarea {
     flex-direction: row;
     justify-content: space-around;
     flex-flow: row wrap;
-    background-color: lightgoldenrodyellow;
+    background-color: #FAFAD2;
 }
 
 ul {
@@ -145,16 +145,16 @@ ul {
 }
 
 .entryItemContainer li {
-    background-color: darkolivegreen;
-    color: white;
-    border: 3px solid saddlebrown;
+    background-color: #556B2F;
+    color: #FFFFFF;
+    border: 3px solid #8B4513;
     border-radius: 20px;
     margin: 0;
     padding: 0;
 }
 
 .entryItemContainer button {
-    border: 1px solid red;
+    border: 1px solid #FF0000;
 }
 
 .entryItem {
