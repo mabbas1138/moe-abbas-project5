@@ -1,0 +1,28 @@
+h1 {
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 3rem;
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
+}
+
+/* MEDIA QUERIES */
+
+@media (max-width: 628px) {
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+        }
+}

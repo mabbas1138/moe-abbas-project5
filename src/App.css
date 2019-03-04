@@ -1,42 +1,15 @@
-
 .App {
-  text-align: center;
   height: 100vh;
+  max-width: 1600px;
+  width: 100%;
   background-image: url(./assets/desert5.jpeg);
   background-position: bottom;
   background-size: cover;
-  padding-top: 1px;
-  border-bottom: 1px 
+  border-bottom: 1px;
+  padding: 1px;
+  margin: 0 auto;
+  text-align: center;
 }
-
-h1 {
-    font-family: 'Nanum Pen Script', cursive; 
-    font-size: 3rem;
-    font-weight: bold;
-    padding: 0;
-    margin: 0;
-    text-transform: uppercase;
-}
-
-h2 {
-    font-family: 'Nanum Pen Script', cursive;
-    font-size: 2rem;
-    font-weight: bold;
-    padding: 0;
-    margin: 0;
-
-}
-
-button {
-    display: flex;
-    flex-direction: column;
-    margin: 20px auto 0 auto;
-}
-
-li {
-    list-style-type: none;
-}
-
 
 /* USER INPUTS */
 
@@ -45,25 +18,17 @@ li {
     height: 550px;
     display: flex;
     flex-direction: column;
-    margin: 30px auto;
-    background-image: url(./assets/waterBucket2_burned.png);
-    background-position: center;
-    background-size: 430px;
-    background-repeat: no-repeat;
+    align-items: center;
+    padding: 40px;
 }
 
 form {
-    margin: 300px auto;
-    width: 310px;
-    padding: 0;
+    width: 500px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: left;
-}
-
-input,
-textarea {
-    border-radius: 7px;
+    margin: 0 auto;
 }
 
 .inputSubject {
@@ -71,35 +36,107 @@ textarea {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin: 0;
-    padding:5px 0 5px 50px;
+    border: 3px solid saddlebrown;
+    border-radius: 20px;
+    padding: 5px;
+    margin: 5px;
 }
 
 .inputSubject h3 {
     font-family: 'Roboto Slab', serif; 
     font-size: 1.1rem;
     color: black;
-    padding-right: 5px;
     margin: 2px 0 2px 0;
-};
+    padding-right: 5px;
+}
 
+input,
+textarea {
+    width: 60%;
+    border-radius: 7px;
+    font-size: 0.8rem;
+}
+
+textarea {
+    box-shadow: none;
+}
+
+/* BUTTONS */
+
+.addStyle,
+.deleteStyle {
+    background-color: lightblue;
+    font-weight: bold;
+    border: 3px solid saddlebrown;
+    border-radius: 20px;
+}
+
+.addStyle {
+    margin: 0 auto;
+    padding: 5px;  
+}
+
+.deleteStyle {
+    margin-bottom: 15px;
+}
+
+/* To help those with poor vision */
+
+.addStyle:focus-within,
+.deleteStyle:focus-within {
+    border: 3px solid lime;
+    background-color: purple;
+    color: white;
+    font-weight: bold;
+}
+
+.bucket {
+    display: inline-block;
+    width: 200px;
+    margin: 20px auto;
+}
+
+/* MEDIA QUERIES */
+
+@media (max-width: 628px) {
+    .userInputs {
+        padding: 30px 0 0 0;
+        margin: 0 auto;
+    }
+
+    form { 
+        width: 300px;
+    }
+
+    .inputSubject {
+        padding: 10px;
+    }
+
+    .addStyle {
+        margin: 5px auto 12px auto;
+    }
+
+    .bucket {
+        width: 150px;
+    }
+}
 
 /* ENTRY DISPLAY section */
 
 .entryDisplay {
     display: flex;
     flex-direction: row;
-    flex-flow: row wrap;
-    padding-left: 1px;
     justify-content: space-around;
+    flex-flow: row wrap;
+    background-color: lightgoldenrodyellow;
 }
 
 ul {
-    margin: 0 auto;
-    padding: 0;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
+    margin: 0 auto;
+    padding: 0;
 }
 
 .entryItemContainer {
@@ -108,12 +145,12 @@ ul {
 }
 
 .entryItemContainer li {
-    margin: 0;
-    padding: 0;
-    color: white;
     background-color: darkolivegreen;
+    color: white;
     border: 3px solid saddlebrown;
     border-radius: 20px;
+    margin: 0;
+    padding: 0;
 }
 
 .entryItemContainer button {
@@ -125,8 +162,8 @@ ul {
 }
 
 .entryItem h3 {
-    font-size: 2rem;
     font-family: 'Nanum Pen Script', cursive;
+    font-size: 2rem;
     padding: 0;
     margin: 0;
 }
@@ -145,12 +182,20 @@ ul {
     margin: 0 auto;
 }
 
-
-
-
 /* ERROR HANDLING */
 
 .errorHandling p {
     width: 100%;
     text-align: center;
 }
+
+/* MEDIA QUERIES */
+
+@media (max-width: 628px) {
+
+    .entryDisplay {
+        margin-top: -10px;
+    }
+}
+
+

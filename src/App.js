@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
-// import Goal from '.Goal/Goal.js';
+import Header from './Header/Header.js'
+import './Header/Header.css';
+// import Entry from '.Entry/Entry.js';
 // import './Goal/Goal.css';
-// import ErrorHandling from './ErrorHandling/ErrorHandling.js';
-// import './ErrorHandling/ErrorHandlig.css';
+import image from './assets/waterBucket2.png'
+import ErrorHandling from './ErrorHandling/ErrorHandling.js';
 import firebase from './firebase.js';
 
 class App extends Component {
@@ -14,6 +16,7 @@ class App extends Component {
             deadline: '',
             notes: '',
             entries: [],
+            hasError: false
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -34,6 +37,7 @@ class App extends Component {
             deadline: this.state.deadline,
             notes: this.state.notes
         }
+
         entryRef.push(entry);
         this.setState({
             goal: '',
@@ -60,45 +64,49 @@ class App extends Component {
                     notes: entries[entry].notes
                 });
             }
-        this.setState({
-            entries: newState
+            this.setState({
+                entries: newState
+            })
         })
-    })
-}
+    }
 
   render() {
     return (
-      <div className='App'>
-        <header>
-            <div className='titleWrapper'>
-                <h1>Don't Kick the Bucket List</h1>
-                <h2>Don't Die with Regrets</h2>
-            </div>
-        </header>
+      <div className='App' id='mainContent'>
+      {/* see index.html file for skipLink code*/}
+        <Header />
         <section className='userInputs'>
+        <ErrorHandling>
           <form onSubmit={this.handleSubmit}>
             <div className='inputSubject'>
                 <h3>Goal:</h3>
-                <input type="text" name="goal" onChange={this.handleChange} value={this.state.goal} required />
+                <label htmlFor='goal' className='visuallyHidden' />
+                <input type='text' name='goal' onChange={this.handleChange} value={this.state.goal} required />
             </div>
             <div className='inputSubject'>
                 <h3>Deadline:</h3>
-                <input type="text" name="deadline" onChange={this.handleChange} value={this.state.deadline} required />
+                <label htmlFor='deadline' className='visuallyHidden' />
+                <input type='text' name='deadline' onChange={this.handleChange} value={this.state.deadline} required />
             </div>
             <div className='inputSubject'>
                 <h3>Notes:</h3>
-                <textarea name="notes" placeholder=" Max. 200 characters" onChange={this.handleChange} value={this.state.notes}  cols='19' maxlength='200' required />
+                <label htmlFor='notes' className='visuallyHidden' />
+                <textarea name='notes' placeholder=' Max. 200 characters' onChange={this.handleChange} value={this.state.notes}  cols='19' maxlength='200' required />
             </div>
-            <button className='addEntry'>Add Entry</button>
+                <button className='addStyle'>Add Entry</button>
           </form>
+          <div className="bucket">
+            <img src={image} alt="a red bucket of water" />
+          </div>
+        </ErrorHandling>
         </section>
         <section className='entryDisplay'>
           <div className='entryDisplayWrapper'>
             <ul>
               {this.state.entries.map((entry) => {
                   return (
-                    <div className='entryItemContainer' id='entryItemContainer'>
-                        <li key={entry.id}>
+                      <div className='entryItemContainer'>
+                          <li key={entry.id}>
                             <div className='entryItem'>
                                 <h3>Goal</h3>
                                 <p>{entry.goal}</p>
@@ -111,7 +119,7 @@ class App extends Component {
                                 <h3>Notes</h3>
                                 <p className='notesBlock'>{entry.notes}</p>
                             </div>
-                            <button onClick={() => this.removeEntry(entry.id)}>Delete</button>
+                            <button className='deleteStyle' onClick={() => this.removeEntry(entry.id)}>Delete</button>
                         </li> 
                     </div>
                   )
